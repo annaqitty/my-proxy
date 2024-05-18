@@ -54,16 +54,17 @@ def logo():
             time.sleep(0.05)
 logo()
 
-
+		xfile.write("\n")
+		xfile.write(str(cfile[i]))
 def scan(empas):
 	sabi = re.compile(r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9.-]+:[a-zA-Z0-9._-]+')
 	empas = sabi.findall(cfile.read())
 	
 	valid = len(empas)
 	for i in range(valid):
-		    i = 0
-		while i <= 255:
-			i += 1
+		open(input_save,'a').write("\n")
+		open(input_save,'a').write(str(cfile[i]))
+		
     print(r"Keur Nga-PROSES >" + GREEN + str(empas) + RED + str(i) )
     open(input_save,'a').write(str(empas) + str(i) + '\n')
 
