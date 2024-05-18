@@ -1,6 +1,5 @@
 #import telnetlib
-#Python3 Code
-#./Annaqitty
+#./annaqitty
 import sys
 import os
 import re
@@ -75,7 +74,7 @@ def logo():
 logo()
 
 def scan(empas, input_save):
-    sabi = re.compile(r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9.-]+:[a-zA-Z0-9._-]+')
+    sabi = re.compile(r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9.-]+:[A-Za-z0-9@#$%^&+=]{8,}+')
     matches = sabi.findall(empas)
     
     with open(input_save, 'a') as f:
