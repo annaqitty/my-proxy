@@ -1,3 +1,6 @@
+#import telnetlib
+#Python3 Code
+#./Annaqitty
 import sys
 import os
 import re
@@ -11,7 +14,6 @@ import queue
 import pprint
 import urllib.parse
 import smtplib
-import telnetlib
 import hashlib
 import string
 import urllib.request
@@ -80,9 +82,28 @@ def scan(empas, input_save):
         for match in matches:
             f.write(f"{match}\n")
 
+def read_file(filename, encoding):
+    try:
+        with open(filename, encoding=encoding) as file:
+            return file.read()
+    except UnicodeDecodeError as e:
+        print(f"Error reading {filename} with encoding {encoding}: {e}")
+        return None
+
 nam = input('Abuskeun Nomer Janda na  :')
 input_save = input(tai + '[!] Nama Jandanya .txt : ')
 
-with open(nam) as cfile:
-    for empas in cfile:
+# Try reading the file with different encodings
+encodings = ['utf-8', 'latin-1', 'cp1252']
+
+file_content = None
+for encoding in encodings:
+    file_content = read_file(nam, encoding)
+    if file_content is not None:
+        break
+
+if file_content:
+    for empas in file_content.splitlines():
         scan(empas, input_save)
+else:
+    print("Failed to read the file with all attempted encodings.")
