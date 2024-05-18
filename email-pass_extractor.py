@@ -61,8 +61,9 @@ def scan(empas):
 	
 	valid = len(empas)
 	for i in range(valid):
-		xfile.write("\n")
-		xfile.write(str(empas[i]))
+		    i = 0
+		while i <= 255:
+			i += 1
     print(r"Keur Nga-PROSES >" + GREEN + str(empas) + RED + str(i) )
     open(input_save,'a').write(str(empas) + str(i) + '\n')
 
